@@ -1,12 +1,20 @@
 import React, { Component } from "react";
-import "./App.css";
+
+import "./App.scss";
+import Header from "./Header";
+import GridSizeChoose from "./GridSizeChoose";
+import ColorPick from "./ColorPick";
+import DrawingArea from "./DrawingArea";
 
 class App extends Component {
   state = {};
   render() {
     return (
-      <div>
-        <p>dziala</p>
+      <div className="wrap">
+        <Header />
+        <GridSizeChoose />
+        <ColorPick />
+        <DrawingArea />
       </div>
     );
   }
