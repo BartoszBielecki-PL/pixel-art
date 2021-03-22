@@ -3,11 +3,14 @@ import "./PixelColor.sass";
 
 const PixelColor = (props) => {
   return (
-    <div
+    <option
       className="color"
       id={props.id}
+      value={props.color}
       style={{ backgroundColor: "#" + props.color }}
-    ></div>
+    >
+      {props.name}
+    </option>
   );
 };
 
