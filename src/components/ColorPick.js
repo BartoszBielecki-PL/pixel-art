@@ -6,7 +6,7 @@ import "./ColorPick.sass";
 
 class ColorPick extends Component {
   state = {
-    colors: [],
+    color: "#ffffff",
   };
 
   // componentDidMount() {
@@ -35,11 +35,22 @@ class ColorPick extends Component {
   //   );
   // });
 
+  handleColorChange = (e) => {
+    this.setState({
+      color: e.target.value,
+    });
+  };
+
   render() {
+    console.log(this.state.color);
     return (
       <section className="colorPick">
         <h2>Pick A Color</h2>
-        <select name="color" id="color"></select>
+        <input
+          type="color"
+          value={this.state.color}
+          onChange={this.handleColorChange}
+        />
       </section>
     );
   }
