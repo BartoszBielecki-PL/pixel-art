@@ -1,17 +1,20 @@
 import React from "react";
 import "./DrawingArea.sass";
+import Pixel from "./Pixel";
 
 const DrawingArea = (props) => {
-  const drawingArea = () => {
-    for (let i = 0; i < props.numberOfGrids; i++) {
-      return <div></div>;
-    }
+  const drawingAreaStyles = {
+    width: props.drawingAreaWidth * 20 + "px",
   };
+
+  const createDrawingArea = props.grids.map((grid) => <Pixel key={grid.id} />);
 
   return (
     <main>
       <h2>Create A Drawing</h2>
-      <section className="drawingArea">{drawingArea}</section>
+      <section className="drawingArea" style={drawingAreaStyles}>
+        {createDrawingArea}
+      </section>
     </main>
   );
 };

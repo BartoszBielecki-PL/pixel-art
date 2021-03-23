@@ -35,7 +35,6 @@ class GridSizeChoose extends Component {
 
   render() {
     const { width, height } = this.state;
-    console.log(this.state.width);
 
     return (
       <section className="gridSizeChoose">

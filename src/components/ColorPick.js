@@ -9,6 +9,10 @@ class ColorPick extends Component {
     color: "#ffffff",
   };
 
+  componentDidMount() {
+    this.props.colorPick(this.state.color);
+  }
+
   // componentDidMount() {
   //   this._getData();
   // }
@@ -36,13 +40,13 @@ class ColorPick extends Component {
   // });
 
   handleColorChange = (e) => {
+    this.props.colorPick(e.target.value);
     this.setState({
       color: e.target.value,
     });
   };
 
   render() {
-    console.log(this.state.color);
     return (
       <section className="colorPick">
         <h2>Pick A Color</h2>
