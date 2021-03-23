@@ -23,7 +23,8 @@ class GridSizeChoose extends Component {
   handleClick = () => {
     const { width, height } = this.state;
     if (width > 0 && height > 0) {
-      this.props.createGrid(width, height);
+      this.props.createGrids(width, height);
+      this.props.setDrawingAreaWidth(width);
       this.setState({
         width: 0,
         height: 0,

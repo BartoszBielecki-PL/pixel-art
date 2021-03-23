@@ -16,25 +16,31 @@ class App extends Component {
     color: "",
   };
 
-  createGrid = (gridWidth, gridHeight) => {
+  createGrids = (gridWidth, gridHeight) => {
     const numberOfGrids = gridHeight * gridWidth;
-    if (gridWidth > 0 && gridHeight > 0) {
-      this.setState({
-        drawingAreaWidth: gridWidth,
-      });
-      for (let i = 0; i < numberOfGrids; i++) {
-        const grid = {
-          id: this.counter,
-        };
-        let grids = [...this.state.grids];
-        grids.push(grid);
-        this.setState({
-          grids,
-        });
-        this.counter++;
-        return true;
-      }
+    let tempGrids = [];
+    for (let i = 0; i < numberOfGrids; i++) {
+      // console.log("w: " + gridWidth + " h: " + gridHeight);
+      const grid = {
+        id: this.counter,
+      };
+      tempGrids.push(grid);
+
+      this.counter++;
+      // console.log(grids);
     }
+
+    // let grids = [...this.state.grids];
+    // grids.push(grid);
+    this.setState({
+      grids: [...tempGrids],
+    });
+  };
+
+  setDrawingAreaWidth = (gridWidth) => {
+    this.setState({
+      drawingAreaWidth: gridWidth,
+    });
   };
 
   colorPick = (color) => {
@@ -44,11 +50,14 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.color);
+    console.log(this.state.grids);
     return (
       <div className="wrap">
         <Header />
-        <GridSizeChoose createGrid={this.createGrid} />
+        <GridSizeChoose
+          createGrids={this.createGrids}
+          setDrawingAreaWidth={this.setDrawingAreaWidth}
+        />
         <ColorPick colorPick={this.colorPick} />
         <DrawingArea
           grids={this.state.grids}

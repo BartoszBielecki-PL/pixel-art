@@ -9,6 +9,8 @@ const DrawingArea = (props) => {
 
   const createDrawingArea = props.grids.map((grid) => <Pixel key={grid.id} />);
 
+  console.log(props.grids);
+
   return (
     <main>
       <h2>Create A Drawing</h2>
