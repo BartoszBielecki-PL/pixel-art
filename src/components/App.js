@@ -6,7 +6,6 @@ import Header from "./Header";
 import GridSizeChoose from "./GridSizeChoose";
 import ColorPick from "./ColorPick";
 import DrawingArea from "./DrawingArea";
-
 class App extends Component {
   counter = 0;
 
@@ -20,18 +19,13 @@ class App extends Component {
     const numberOfGrids = gridHeight * gridWidth;
     let tempGrids = [];
     for (let i = 0; i < numberOfGrids; i++) {
-      // console.log("w: " + gridWidth + " h: " + gridHeight);
       const grid = {
         id: this.counter,
+        color: "000000",
       };
       tempGrids.push(grid);
-
       this.counter++;
-      // console.log(grids);
     }
-
-    // let grids = [...this.state.grids];
-    // grids.push(grid);
     this.setState({
       grids: [...tempGrids],
     });
@@ -43,14 +37,31 @@ class App extends Component {
     });
   };
 
+  setPixelBackgroundColor = (backgroundColor) => {
+    this.setState({
+      color: backgroundColor,
+    });
+  };
+
   colorPick = (color) => {
     this.setState({
       color,
     });
   };
 
+  colorPixel = (id, newColor) => {
+    let grids = [...this.state.grids];
+    grids.forEach((grid) => {
+      if (grid.id === id) {
+        grid.color = newColor;
+      }
+    });
+    this.setState({
+      grids,
+    });
+  };
+
   render() {
-    console.log(this.state.grids);
     return (
       <div className="wrap">
         <Header />
@@ -62,6 +73,8 @@ class App extends Component {
         <DrawingArea
           grids={this.state.grids}
           drawingAreaWidth={this.state.drawingAreaWidth}
+          newBackgroundColor={this.state.color}
+          colorPixel={this.colorPixel}
         />
       </div>
     );

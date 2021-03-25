@@ -7,9 +7,15 @@ const DrawingArea = (props) => {
     width: props.drawingAreaWidth * 20 + "px",
   };
 
-  const createDrawingArea = props.grids.map((grid) => <Pixel key={grid.id} />);
-
-  console.log(props.grids);
+  const createDrawingArea = props.grids.map((grid) => (
+    <Pixel
+      key={grid.id}
+      id={grid.id}
+      colorPixel={props.colorPixel}
+      newBackgroundColor={props.newBackgroundColor}
+      currentBackgroundColor={grid.color}
+    />
+  ));
 
   return (
     <main>

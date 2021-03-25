@@ -1,8 +1,17 @@
 import React from "react";
-import "./Pixel.sass";
 
 const Pixel = (props) => {
-  return <div className="pixel" id={props.id}></div>;
+  const pixelStyles = {
+    backgroundColor: props.currentBackgroundColor,
+  };
+  return (
+    <div
+      className="pixel"
+      id={props.id}
+      onClick={() => props.colorPixel(props.id, props.newBackgroundColor)}
+      style={pixelStyles}
+    ></div>
+  );
 };
 
 export default Pixel;
