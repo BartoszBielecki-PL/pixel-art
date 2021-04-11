@@ -4,8 +4,8 @@ import "./GridSizeChoose.sass";
 
 class GridSizeChoose extends Component {
   state = {
-    width: "",
-    height: "",
+    width: 1,
+    height: 1,
   };
 
   handleWidthChange = (e) => {
@@ -49,7 +49,6 @@ class GridSizeChoose extends Component {
           onChange={this.handleWidthChange}
           min="1"
           max="100"
-          defaultValue={1}
         />
         <label htmlFor="pixelHeight"> Pixels height </label>
         <input
@@ -58,7 +57,6 @@ class GridSizeChoose extends Component {
           onChange={this.handleHeightChange}
           min="1"
           max="100"
-          defaultValue={1}
         />
         <button className="btn btn-success" onClick={this.handleClick}>
           Create Grid
